@@ -9,5 +9,5 @@ class TestCase(TestCase):
 
     def test_view(self):
         reponse = self.client.get(reverse('logging'))
-        self.assertEqual(reponse.status_code, 201,
+        self.assertEqual(reponse.status_code, 200,
                          "view should return 200 status code")
