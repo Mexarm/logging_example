@@ -6,13 +6,20 @@ pipeline {
                 sh 'python --version'
             }
         }
-        stage('install') {
+        stage('install deps') {
             steps {
                 sh 'pip install pipenv'
                 dir('django') {
                     sh 'pipenv install'
                 }
             }
+        }
+        stage('run tests') {
+            steps {
+                dir('django'){
+                    sh 'pipenv run python manage.py test'    
+                }
+            }   
         }
     }
 }
